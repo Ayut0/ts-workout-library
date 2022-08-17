@@ -1,15 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
-import { workoutOptions, fetchWorkout } from '../utilities/fetchWorkout'
+import { workoutOptions, fetchWorkout } from '../utilities/fetchWorkout';
+
+type Workout = {
+  bodyPart: string
+  equipment: string
+  gifUrl: string
+  id: string
+  name: string
+  target: string
+}
 
 export const SearchWorkouts: React.FC = () => {
   const [search, setSearch] = useState<string>('');
+  const [workouts, setWorkouts] = useState<Workout>()
 
   const searchHandler =async () => {
-    const workoutData = await fetchWorkout(workoutOptions);
-    console.log(workoutData);
-      // if(search){
-      // }
+    if(search){
+        const workoutData = await fetchWorkout(workoutOptions);
+        console.log(workoutData);
+
+        //Filter workout based on user's input (name, bodypart, target, equipment)
+        const filteredWorkouts = await workoutData.filter(
+          (workout:any) =>
+          workout.name.toLowerCase().includes(search)
+          || workout.bodyPart.toLowerCase().includes(search)
+          || workout.target.toLowerCase().includes(search)
+          || workout.equipment.toLowerCase().includes(search)
+        );
+
+        //Reset input
+        await setSearch('');
+        await setWorkouts(filteredWorkouts);
+      }
 
   }
 
@@ -18,7 +41,7 @@ export const SearchWorkouts: React.FC = () => {
       <Typography fontWeight='700' mb='48px' textAlign='center' sx={{
         fontSize :{lg: '40px', xs: '28px'}
       }}>
-        The workouts you might like
+        More than 1,000 kinds of workouts
       </Typography>
       <Box position='relative' mb='72px'>
         <TextField
