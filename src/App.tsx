@@ -8,7 +8,6 @@ import { Home } from './UI/Home';
 import { Footer } from './Components/Footer';
 
 function App() {
-  console.log(process.env.REACT_APP_RAPID_API_KEY);
   return (
         <Box width='400px' sx={{ width : {xl: '1488px'}}} m='auto'>
           <Navbar />

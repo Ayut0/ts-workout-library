@@ -11,7 +11,7 @@ export const HeroBanner: React.FC = () => {
         <Typography color='#a862ea' fontWeight='700' fontSize='1.75rem' fontFamily='Mochiy Pop One'>
             Workout World
         </Typography>
-        <Typography fontWeight={700} 
+        <Typography fontWeight={700}
             sx={{
                 fontSize: {lg: '52px', xs: '40px'},
                 fontFamily: 'Mochiy Pop One'
