@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
-import { workoutOptions, test } from '../utilities/fetchWorkout'
+import { workoutOptions, fetchWorkout } from '../utilities/fetchWorkout'
 
 export const SearchWorkouts: React.FC = () => {
   const [search, setSearch] = useState<string>('');
-  console.log(test);
 
   const searchHandler =async () => {
+    const workoutData = await fetchWorkout(workoutOptions);
+    console.log(workoutData);
       // if(search){
-      //   const workoutData = await fetchWorkout(workoutOptions);
-
-      //   console.log(workoutData);
       // }
 
   }
