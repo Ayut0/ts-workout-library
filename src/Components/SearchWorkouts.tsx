@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
-import { workoutOptions, fetchWorkout } from '../utilities/fetchWorkout';
+import { fetchWorkout } from '../utilities/fetchWorkout';
+import { HorizontalScrollBar } from './HorizontalScrollBar'
 
 type Workout = {
   bodyPart: string
@@ -13,11 +14,22 @@ type Workout = {
 
 export const SearchWorkouts: React.FC = () => {
   const [search, setSearch] = useState<string>('');
-  const [workouts, setWorkouts] = useState<Workout>()
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [bodyParts, setBodyParts] = useState([''])
+
+  //Load category
+  useEffect(() =>{
+    const fetchWorkoutData = async () =>{
+      const bodyParts = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
+      setBodyParts(['all', ...bodyParts])
+    }
+
+    fetchWorkoutData();
+  },[])
 
   const searchHandler =async () => {
     if(search){
-        const workoutData = await fetchWorkout(workoutOptions);
+        const workoutData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`);
         console.log(workoutData);
 
         //Filter workout based on user's input (name, bodypart, target, equipment)
@@ -30,10 +42,9 @@ export const SearchWorkouts: React.FC = () => {
         );
 
         //Reset input
-        await setSearch('');
-        await setWorkouts(filteredWorkouts);
+        setSearch('');
+        setWorkouts(filteredWorkouts);
       }
-
   }
 
   return (
@@ -60,10 +71,13 @@ export const SearchWorkouts: React.FC = () => {
             marginTop: '16px',
             position: 'absolute',
             right: '0'
-          }} 
+          }}
           onClick={searchHandler}
           >Search
         </Button>
+      </Box>
+      <Box sx={{position: 'relative', width: '100%', p: '20px'}}>
+        <HorizontalScrollBar data={bodyParts}/>
       </Box>
     </Stack>
   )
