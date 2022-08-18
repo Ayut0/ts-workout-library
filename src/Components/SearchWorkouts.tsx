@@ -3,25 +3,22 @@ import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 import { fetchWorkout } from '../utilities/fetchWorkout';
 import { HorizontalScrollBar } from './HorizontalScrollBar'
 
-type Workout = {
-  bodyPart: string
-  equipment: string
-  gifUrl: string
-  id: string
-  name: string
-  target: string
+
+type PropsFromHome ={
+  setWorkouts: Function
+  eachBodyPart: string
+  setEachBodyPart: Function
 }
 
-export const SearchWorkouts: React.FC = () => {
+export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyPart, setEachBodyPart }) => {
   const [search, setSearch] = useState<string>('');
-  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [bodyParts, setBodyParts] = useState([''])
 
   //Load category
   useEffect(() =>{
     const fetchWorkoutData = async () =>{
-      const bodyParts = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
-      setBodyParts(['all', ...bodyParts])
+      const bodyPartsList = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
+      setBodyParts(['all', ...bodyPartsList])
     }
 
     fetchWorkoutData();
@@ -77,7 +74,7 @@ export const SearchWorkouts: React.FC = () => {
         </Button>
       </Box>
       <Box sx={{position: 'relative', width: '100%', p: '20px'}}>
-        <HorizontalScrollBar data={bodyParts}/>
+        <HorizontalScrollBar data={bodyParts} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart} />
       </Box>
     </Stack>
   )
