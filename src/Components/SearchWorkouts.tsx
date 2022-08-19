@@ -67,7 +67,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
             height: '52px',
             marginTop: '16px',
             position: 'absolute',
-            right: '0'
+            right: '0',
           }}
           onClick={searchHandler}
           >Search

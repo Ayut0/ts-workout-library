@@ -17,24 +17,15 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
         direction='row'
         spacing={2}
         className='bodyPart-card'
-        sx={
-            bodyPart === eachBodyPart ? {
-                borderYop: '4px solid #a862ea',
-                backgroundColor: '#fff',
-                borderBottomLeftRadius: '20px',
-                width: '270px',
-                height: '280px',
-                cursor: 'pointer',
-                gap: '48px'
-            } : {
-                backgroundColor: '#fff',
-                borderBottomLeftRadius: '20px',
-                width: '270px',
-                height: '280px',
-                cursor: 'pointer',
-                gap: '48px'
-            }
-        }
+        sx={{
+            borderTop: bodyPart === eachBodyPart ? '4px solid #a862ea' : '',
+            backgroundColor: '#f8f0fc',
+            borderBottomLeftRadius: '20px',
+            width: '270px',
+            height: '280px',
+            cursor: 'pointer',
+            gap: '48px'
+        }}
     >
         <img src={Icon}
             alt='cardIcon'
