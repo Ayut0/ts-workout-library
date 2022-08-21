@@ -46,7 +46,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
 
   return (
     <Stack alignItems='center' mt='40px' justifyContent='center' p='20px'>
-      <Typography fontWeight='700' mb='48px' textAlign='center' sx={{
+      <Typography fontWeight='700' mb='48px' textAlign='center' fontFamily='Mochiy Pop One' sx={{
         fontSize :{lg: '40px', xs: '28px'}
       }}>
         More than 1,000 kinds of workouts
