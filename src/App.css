@@ -75,7 +75,7 @@ body {
   animation: bounce 2s infinite ease-in-out;
 }
 
-.exercise-card {
+.workout-card {
   width: 400px;
   height: 445px;
   background: #fff;
@@ -90,7 +90,7 @@ body {
   transition: 0.3s all ease-in-out;
 }
 
-.exercise-card img {
+.workout-card img {
   height: 326px;
 }
 
@@ -99,7 +99,7 @@ body {
   transition: 0.3s all ease-in-out;
 }
 
-.exercise-card:hover,
+.workout-card:hover,
 .bodyPart-card:hover {
   transform: scale(1.1, 1.1);
 }
@@ -109,7 +109,7 @@ body {
   border: 1px solid #a862ea !important;
 }
 
-.exercise-video {
+.workout-video {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -138,11 +138,11 @@ body {
     display: none;
   }
 
-  .exercise-card {
+  .workout-card {
     width: 320px;
   }
 
-  .exercise-video {
+  .workout-video {
     width: 320px;
     height: 300px;
   }
@@ -150,7 +150,7 @@ body {
 }
 
 @media screen and (max-width:400px) {
-  .exercise-card {
+  .workout-card {
     width: 280px;
   }
 }
