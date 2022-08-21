@@ -14,7 +14,7 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
     <Stack
         alignItems='center'
         justifyContent='center'
-        direction='row'
+        direction='column'
         spacing={2}
         className='bodyPart-card'
         sx={{
@@ -26,13 +26,17 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
             cursor: 'pointer',
             gap: '48px'
         }}
+        onClick={()=>{
+            setEachBodyPart(bodyPart);
+            window.scrollTo({top: 1800, left: 100, behavior: 'smooth'})
+        }}
     >
         <img src={Icon}
             alt='cardIcon'
             className='body-part-icon'
             style={{width: '80px', height: '80px'}}>
         </img>
-        <Typography>
+        <Typography fontSize='24px' fontWeight='bold' textTransform='capitalize'>
             {bodyPart}
         </Typography>
     </Stack>
