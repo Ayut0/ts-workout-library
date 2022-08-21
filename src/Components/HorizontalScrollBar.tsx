@@ -1,32 +1,29 @@
-import { Box, Typography } from '@mui/material'
-import { useContext } from 'react';
-import React from 'react';
+import { Box } from '@mui/material'
+import React, {useContext} from 'react';
 import { BodyPartCard } from './BodyPartCard'
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import LeftArrowIcon from '../assets/left-arrow.png'
 import RightArrowIcon from '../assets/right-arrow.png'
 
-
-// type scrollEventType = {
-//   onClick:(event: React.MouseEvent<HTMLInputElement>) =>void
-// }
-
 function Arrow({
   children,
   onClick
 }: {
-  children: React.ReactNode;
-  onClick: VoidFunction;
+  children: React.ReactNode
+  onClick: VoidFunction
 }){
   return (
     <button
       onClick={onClick}
       style={{
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        right: "1%",
+        cursor: 'pointer',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        right: '1%',
+        width: '3%',
+        height: 'auto',
+        userSelect: "none"
       }}
     >
       {children}
@@ -35,20 +32,20 @@ function Arrow({
 }
 
 const LeftArrow = () => {
-  const { scrollPrev } = React.useContext(VisibilityContext)
-  
+  const { scrollPrev } = useContext(VisibilityContext)
+
   return (
-    <Arrow onClick={() => scrollPrev()}>
-      <img src={LeftArrowIcon} alt="right-arrow" />
+    <Arrow onClick={() => console.log(scrollPrev(), 'clicked')}>
+      <img src={LeftArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
     </Arrow>
   );
 };
 
 const RightArrow = () => {
-  const { scrollNext } = React.useContext(VisibilityContext)
+  const { scrollNext } = useContext(VisibilityContext)
   return (
     <Arrow onClick={() => scrollNext()}>
-      <img src={RightArrowIcon} alt="right-arrow" />
+      <img src={RightArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
     </Arrow>
   );
 };

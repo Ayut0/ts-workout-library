@@ -1,6 +1,5 @@
 import axios from "axios"
 
-
 export const fetchWorkout = async(url:string) =>{
   const workoutOptions:any = {
       method: 'GET',

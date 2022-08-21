@@ -4,18 +4,18 @@ import { HeroBanner } from "../Components/HeroBanner";
 import { SearchWorkouts } from "../Components/SearchWorkouts";
 import { Workouts } from "../Components/Workouts";
 
-type Workout = {
-    bodyPart: string
-    equipment: string
-    gifUrl: string
-    id: string
-    name: string
-    target: string
-  }
+// export type Workout = {
+//     bodyPart: string
+//     equipment: string
+//     gifUrl: string
+//     id: string
+//     name: string
+//     target: string
+//   }
 
 export const Home: React.FC = ()=>{
     const [eachBodyPart, setEachBodyPart] = useState<string>('all')
-    const [workouts, setWorkouts] = useState<Workout[]>([]);
+    const [workouts, setWorkouts] = useState<['']>(['']);
     return(
         <Box>
             <HeroBanner />
@@ -26,6 +26,7 @@ export const Home: React.FC = ()=>{
                 setEachBodyPart={setEachBodyPart}
              />
             <Workouts
+                workouts={workouts}
                 setWorkouts={setWorkouts}
                 eachBodyPart={eachBodyPart}
                 setEachBodyPart={setEachBodyPart}
