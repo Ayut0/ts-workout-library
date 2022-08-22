@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import { Workout } from '../UI/Home'
+import { Workout } from '../UI/Home';
 import Pagination from '@mui/material/Pagination';
 import { Box, Stack, Typography } from '@mui/material';
-import { fetchWorkout } from '../utilities/fetchWorkout'
+import { fetchWorkout } from '../utilities/fetchWorkout';
+import { WorkoutCard } from '../Components/WorkoutCard';
 
 type PropsFromHome ={
   workouts: Workout[] | undefined
@@ -20,11 +21,7 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
       <Stack direction='row' sx={{gap: {lg: '110px', xs: '50px'}}} flexWrap='wrap' justifyContent='center'>
         { (workouts !== undefined) && workouts.map((workout, index) =>(
           <div>
-            <span>{workout.id}</span>
-            <span>{workout.name}</span>
-            <span>{workout.target}</span>
-            <img src={workout.gifUrl} alt="" />
-            <span>{workout.equipment}</span>
+            <WorkoutCard key={index} workout={workout}/>
           </div>
         ))}
       </Stack>
