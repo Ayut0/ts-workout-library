@@ -75,9 +75,9 @@ body {
   animation: bounce 2s infinite ease-in-out;
 }
 
-.workout-card {
+/* .workout-card {
   width: 400px;
-  height: 445px;
+  height: 480px;
   background: #fff;
   border-top: 4px solid #a862ea;
   border-bottom-left-radius: 20px;
@@ -88,7 +88,7 @@ body {
   padding-bottom: 10px;
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
-}
+} */
 
 .workout-card img {
   height: 326px;
