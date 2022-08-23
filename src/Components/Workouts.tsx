@@ -13,17 +13,49 @@ type PropsFromHome ={
 }
 
 export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachBodyPart, setEachBodyPart }) => {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const workoutsPerPage: number = 9;
+
+
+  //it's always a multiple of workouts per page
+  const indexOfLastWorkout: number = currentPage * workoutsPerPage;
+  console.log(indexOfLastWorkout)
+  
+  const indexOfFirstWorkout: number= indexOfLastWorkout - workoutsPerPage;
+  console.log(indexOfFirstWorkout)
+  //Pick first 9 workouts from the original search result
+  //Array?.method : ternary operator
+  const currentShowedWorkouts = workouts?.slice(indexOfFirstWorkout, indexOfLastWorkout)
+  console.log(currentShowedWorkouts);
+
+  const paginate = (e:any, val:number) =>{
+    setCurrentPage(val);
+    window.scrollTo({ top: 1800, behavior: 'smooth' })
+  }
   return (
     <Box id='workouts' sx={{mt: {lg: '110px'}}} mt='50px' p='20px'>
       <Typography variant='h3' mb='48px' fontFamily='Mochiy Pop One'>
         Showing results
       </Typography>
       <Stack direction='row' sx={{gap: {lg: '110px', xs: '50px'}}} flexWrap='wrap' justifyContent='center'>
-        { (workouts !== undefined) && workouts.map((workout, index) =>(
+        { (currentShowedWorkouts !== undefined) && currentShowedWorkouts.map((workout, index) =>(
           <div>
             <WorkoutCard key={index} workout={workout}/>
           </div>
         ))}
+      </Stack>
+      <Stack mt='100px' alignItems='center'>
+        { (workouts !== undefined) && workouts.length > 9 && (
+          <Pagination
+            color='standard'
+            variant="outlined"
+            defaultPage={1}
+            count={Math.ceil(workouts.length / workoutsPerPage)}
+            page={currentPage}
+            onChange={paginate}
+            size='large'
+          />
+        )}
       </Stack>
     </Box>
   )
