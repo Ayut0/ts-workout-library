@@ -3,7 +3,6 @@ import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 import { fetchWorkout } from '../utilities/fetchWorkout';
 import { HorizontalScrollBar } from './HorizontalScrollBar'
 
-
 type PropsFromHome ={
   setWorkouts: Function
   eachBodyPart: string

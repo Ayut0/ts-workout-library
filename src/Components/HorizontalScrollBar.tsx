@@ -35,7 +35,7 @@ const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext)
 
   return (
-    <Arrow onClick={() => console.log(scrollPrev(), 'clicked')}>
+    <Arrow onClick={() => scrollPrev()}>
       <img src={LeftArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
     </Arrow>
   );
