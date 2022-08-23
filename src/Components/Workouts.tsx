@@ -16,22 +16,39 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
   const [currentPage, setCurrentPage] = useState<number>(1)
   const workoutsPerPage: number = 9;
 
-
   //it's always a multiple of workouts per page
   const indexOfLastWorkout: number = currentPage * workoutsPerPage;
-  console.log(indexOfLastWorkout)
+  // console.log(indexOfLastWorkout)
   
   const indexOfFirstWorkout: number= indexOfLastWorkout - workoutsPerPage;
-  console.log(indexOfFirstWorkout)
+  // console.log(indexOfFirstWorkout)
   //Pick first 9 workouts from the original search result
   //Array?.method : ternary operator
   const currentShowedWorkouts = workouts?.slice(indexOfFirstWorkout, indexOfLastWorkout)
-  console.log(currentShowedWorkouts);
+  // console.log(currentShowedWorkouts);
 
   const paginate = (e:any, val:number) =>{
     setCurrentPage(val);
     window.scrollTo({ top: 1800, behavior: 'smooth' })
   }
+
+  useEffect(() =>{
+    const fetchWorkoutsFromApi = async () =>{
+      let workoutsData = [];
+
+      if(eachBodyPart === 'all'){
+        workoutsData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`)
+        console.log(workoutsData)
+      }else{
+        workoutsData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_WORKOUT_BY_BODYPART}/${eachBodyPart}`)
+      }
+
+      setWorkouts(workoutsData);
+    }
+
+    fetchWorkoutsFromApi();
+  }, [eachBodyPart])
+
   return (
     <Box id='workouts' sx={{mt: {lg: '110px'}}} mt='50px' p='20px'>
       <Typography variant='h3' mb='48px' fontFamily='Mochiy Pop One'>

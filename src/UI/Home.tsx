@@ -17,7 +17,9 @@ export type Workout = {
 
 export const Home: React.FC = ()=>{
     const [eachBodyPart, setEachBodyPart] = useState<string>('all')
-    const [workouts, setWorkouts] = useState<Workout[]>()
+    const [workouts, setWorkouts] = useState<Workout[]>();
+
+    console.log(eachBodyPart);
     return(
         <Box>
             <HeroBanner />

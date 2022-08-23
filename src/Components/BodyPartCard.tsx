@@ -8,7 +8,6 @@ type PropsFromScrollBar = {
     setEachBodyPart: Function
 }
 
-
 export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyPart, setEachBodyPart} ) => {
   return (
     <Stack
