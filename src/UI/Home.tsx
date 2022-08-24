@@ -11,9 +11,7 @@ export type Workout = {
     id: string
     name: string
     target: string
-  }
-
-// export { Workout }
+}
 
 export const Home: React.FC = ()=>{
     const [eachBodyPart, setEachBodyPart] = useState<string>('all')
