@@ -8,6 +8,7 @@ import { SimilarWorkout } from "../Components/SimilarWorkout"
 import { fetchWorkout } from "../utilities/fetchWorkout"
 import { Workout } from "./Home"
 
+
 export const WorkoutDetail: React.FC = () =>{
     const [workoutDetail, setWorkoutDetail] = useState<Workout[]>();
     const { id } = useParams<string>();
@@ -23,7 +24,7 @@ export const WorkoutDetail: React.FC = () =>{
     }, [id])
     return(
         <Box>
-            <Detail />
+            <Detail workoutDetail={workoutDetail}/>
             <WorkoutVideo />
             <SimilarWorkout />
         </Box>
