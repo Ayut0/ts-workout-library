@@ -19,12 +19,12 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
   //it's always a multiple of workouts per page
   const indexOfLastWorkout: number = currentPage * workoutsPerPage;
   // console.log(indexOfLastWorkout)
-  
+
   const indexOfFirstWorkout: number= indexOfLastWorkout - workoutsPerPage;
   // console.log(indexOfFirstWorkout)
   //Pick first 9 workouts from the original search result
   //Array?.method : ternary operator
-  const currentShowedWorkouts = workouts?.slice(indexOfFirstWorkout, indexOfLastWorkout)
+  const currentShowedWorkouts: Workout[]|undefined = workouts?.slice(indexOfFirstWorkout, indexOfLastWorkout)
   // console.log(currentShowedWorkouts);
 
   const paginate = (e:any, val:number) =>{
@@ -34,11 +34,10 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
 
   useEffect(() =>{
     const fetchWorkoutsFromApi = async () =>{
-      let workoutsData = [];
+      let workoutsData: Workout[] = [];
 
       if(eachBodyPart === 'all'){
         workoutsData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`)
-        console.log(workoutsData)
       }else{
         workoutsData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_WORKOUT_BY_BODYPART}/${eachBodyPart}`)
       }
