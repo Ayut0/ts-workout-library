@@ -7,15 +7,51 @@ import TargetImage from '../assets/targetImage.png'
 import EquipmentImage from '../assets/equipment.png'
 
 type PropsFromWorkoutDetail ={
-  workoutDetail: Workout[]|undefined
+  workoutDetail: Workout|undefined
 }
 
-
 export const Detail: React.FC<PropsFromWorkoutDetail> = ({ workoutDetail }) => {
+  const icons = [
+    {
+      image: BodyPartImage,
+      name: `Body part: ${workoutDetail?.bodyPart}`
+    },
+    {
+      image: TargetImage,
+      name: `Target muscle: ${workoutDetail?.target}`
+    },
+    {
+      image: EquipmentImage,
+      name: `Equipment: ${workoutDetail?.equipment}`
+    }
+  ]
+
   return (
-    <div>
-      {/* <img src={testPic1} alt="" /> */}
-      {/* <img src={testPic} alt="" /> */}
-    </div>
+      <Stack gap='60px' sx={{flexDirection: {lg: 'row'}, p: '20px', alignItems: 'center'}}>
+        {(workoutDetail !== undefined) && (
+          <>
+            <img src={workoutDetail.gifUrl} alt={workoutDetail.name} loading='lazy' className='detail-image'></img>
+            <Stack sx={{gap: {lg: '35px', xs: '20px'}}}>
+              <Typography variant='h3' sx={{fontWeight: '700', fontFamily: 'Mochiy Pop One'}}>
+                {workoutDetail.name}
+              </Typography>
+              <Typography variant='h6'>
+                Workout can improve not only your physical health but brain health, blood pressure and so on. {workoutDetail.name} is one of the best choices of the workouts to build your {workoutDetail.target}.
+                {(workoutDetail.equipment === 'body weight')? ('You dont need any equipments'):(`You need a ${workoutDetail.equipment}`)}
+              </Typography>
+              {icons?.map((icon) =>(
+                <Stack key={icon.name} direction='row' alignItems='center'>
+                  <Button sx={{width: '100px', height: '100px'}}>
+                    <img src={icon.image} alt={icon.name} style={{width: '50px'}}></img>
+                  </Button>
+                  <Typography variant='h4' sx={{fontFamily: 'Mochiy Pop One', textTransform: 'capitalize'}}>
+                    {icon.name}
+                  </Typography>
+                </Stack>
+              ))}
+            </Stack>
+          </>
+        )}
+      </Stack>
   )
 }

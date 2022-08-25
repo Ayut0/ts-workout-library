@@ -10,13 +10,13 @@ import { Workout } from "./Home"
 
 
 export const WorkoutDetail: React.FC = () =>{
-    const [workoutDetail, setWorkoutDetail] = useState<Workout[]>();
+    const [workoutDetail, setWorkoutDetail] = useState<Workout>();
     const { id } = useParams<string>();
     console.log(typeof(id));
 
     useEffect(() =>{
         const fetchWorkoutData = async() =>{
-            const workoutDetailData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/${id}`);
+            const workoutDetailData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/exercise/${id}`);
             setWorkoutDetail(workoutDetailData)
         }
 
