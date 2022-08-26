@@ -13,6 +13,18 @@ export type Workout = {
     target: string
 }
 
+export type Video = {
+    channelId?: string
+    channelName?: string
+    description?: string
+    length?: string
+    thumbnails: [
+        height: string,
+        url: string,
+        width: string
+    ]
+}
+
 export const Home: React.FC = ()=>{
     const [eachBodyPart, setEachBodyPart] = useState<string>('all')
     const [workouts, setWorkouts] = useState<Workout[]>();
