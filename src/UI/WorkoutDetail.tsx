@@ -6,25 +6,31 @@ import { WorkoutVideo } from "../Components/WorkoutVideo"
 import { SimilarWorkout } from "../Components/SimilarWorkout"
 
 import { fetchWorkout, fetchWorkoutVideos} from "../utilities/fetchWorkout"
-import { Workout, Video } from "./Home"
+import { Workout, video, } from "./Home"
 
 //define the type of youtube videos
 
-
 export const WorkoutDetail: React.FC = () =>{
     const [workoutDetail, setWorkoutDetail] = useState<Workout>();
-    const [workoutVideo, setWorkoutVideos] = useState<Video>();
+    const [workoutVideos, setWorkoutVideos] = useState<video | undefined>();
+    const [targetMuscleWorkouts, setTargetMuscleWorkouts] = useState<Workout>()
+    const [sameEquipmentWorkouts, setSameEquipmentWorkouts] = useState<Workout>()
     const { id } = useParams<string>();
-    console.log(typeof(id));
 
     useEffect(() =>{
         const fetchWorkoutData = async() =>{
             const workoutDetailData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/exercise/${id}`);
             setWorkoutDetail(workoutDetailData)
             //Get videos from youtube
-            const workoutVideoData:Video = await fetchWorkoutVideos(`${process.env.REACT_APP_RAPID_API_YOUTUBE_URL}/search/${workoutDetailData.name}`);
-            //Set the type of youtube video object
+            const workoutVideoData:video = await fetchWorkoutVideos(`${process.env.REACT_APP_RAPID_API_YOUTUBE_URL}/search?query=${workoutDetailData.name}`);
             setWorkoutVideos(workoutVideoData)
+
+            //Get similar target workout data
+            const targetMuscleWorkoutsData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/target/${workoutDetailData.target}`);
+            setTargetMuscleWorkouts(targetMuscleWorkouts)
+            const sameEquipmentWorkoutsData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/equipment/${workoutDetailData.target}`)
+            setSameEquipmentWorkouts(sameEquipmentWorkouts)
+
         }
 
         fetchWorkoutData()
@@ -32,8 +38,8 @@ export const WorkoutDetail: React.FC = () =>{
     return(
         <Box>
             <Detail workoutDetail={workoutDetail}/>
-            <WorkoutVideo />
-            <SimilarWorkout />
+            <WorkoutVideo workoutVideos={workoutVideos} name={workoutDetail?.name}/>
+            <SimilarWorkout sameTargetWorkouts={targetMuscleWorkouts} sameEquipmentWorkouts={sameEquipmentWorkouts}/>
         </Box>
     )
 }

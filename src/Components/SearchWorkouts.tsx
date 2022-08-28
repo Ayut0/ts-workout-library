@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Workout } from '../UI/Home'
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 import { fetchWorkout } from '../utilities/fetchWorkout';
 import { HorizontalScrollBar } from './HorizontalScrollBar'
@@ -25,12 +26,12 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
 
   const searchHandler =async () => {
     if(search){
-        const workoutData = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`);
+        const workoutData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`);
         console.log(workoutData);
 
         //Filter workout based on user's input (name, bodypart, target, equipment)
         const filteredWorkouts = await workoutData.filter(
-          (workout:any) =>
+          (workout:Workout) =>
           workout.name.toLowerCase().includes(search)
           || workout.bodyPart.toLowerCase().includes(search)
           || workout.target.toLowerCase().includes(search)
