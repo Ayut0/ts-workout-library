@@ -74,7 +74,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
         </Button>
       </Box>
       <Box sx={{position: 'relative', width: '100%', p: '20px'}}>
-        <HorizontalScrollBar data={bodyParts} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart} />
+        <HorizontalScrollBar data={bodyParts} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart} isBodyPart/>
       </Box>
     </Stack>
   )

@@ -13,8 +13,8 @@ import { Workout, video, } from "./Home"
 export const WorkoutDetail: React.FC = () =>{
     const [workoutDetail, setWorkoutDetail] = useState<Workout>();
     const [workoutVideos, setWorkoutVideos] = useState<video | undefined>();
-    const [targetMuscleWorkouts, setTargetMuscleWorkouts] = useState<Workout>()
-    const [sameEquipmentWorkouts, setSameEquipmentWorkouts] = useState<Workout>()
+    const [targetMuscleWorkouts, setTargetMuscleWorkouts] = useState<Workout[]>()
+    const [sameEquipmentWorkouts, setSameEquipmentWorkouts] = useState<Workout[]>()
     const { id } = useParams<string>();
 
     useEffect(() =>{
@@ -26,10 +26,10 @@ export const WorkoutDetail: React.FC = () =>{
             setWorkoutVideos(workoutVideoData)
 
             //Get similar target workout data
-            const targetMuscleWorkoutsData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/target/${workoutDetailData.target}`);
-            setTargetMuscleWorkouts(targetMuscleWorkouts)
-            const sameEquipmentWorkoutsData:Workout = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/equipment/${workoutDetailData.target}`)
-            setSameEquipmentWorkouts(sameEquipmentWorkouts)
+            const targetMuscleWorkoutsData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/target/${workoutDetailData.target}`);
+            setTargetMuscleWorkouts(targetMuscleWorkoutsData)
+            const sameEquipmentWorkoutsData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}/equipment/${workoutDetailData.equipment}`)
+            setSameEquipmentWorkouts(sameEquipmentWorkoutsData)
 
         }
 
