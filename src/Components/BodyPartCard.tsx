@@ -4,8 +4,8 @@ import Icon from '../Workout library-logos/Workout library-logos_black.png'
 
 type PropsFromScrollBar = {
     bodyPart:any
-    eachBodyPart: string
-    setEachBodyPart: Function
+    eachBodyPart?: string
+    setEachBodyPart?: Function
 }
 
 export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyPart, setEachBodyPart} ) => {
@@ -26,7 +26,7 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
             gap: '48px'
         }}
         onClick={()=>{
-            setEachBodyPart(bodyPart);
+            setEachBodyPart?.(bodyPart);
             window.scrollTo({top: 1800, left: 100, behavior: 'smooth'})
         }}
     >

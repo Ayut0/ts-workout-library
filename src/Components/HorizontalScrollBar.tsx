@@ -4,6 +4,8 @@ import { BodyPartCard } from './BodyPartCard'
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import LeftArrowIcon from '../assets/left-arrow.png'
 import RightArrowIcon from '../assets/right-arrow.png'
+import { Workout } from '../UI/Home'
+import { WorkoutCard } from './WorkoutCard';
 
 function Arrow({
   children,
@@ -52,22 +54,26 @@ const RightArrow = () => {
 
 
 type PropsFromSearch = {
-  data: string[]
-  eachBodyPart: string
-  setEachBodyPart: Function
+  data: string[] | Workout []
+  eachBodyPart?: string
+  setEachBodyPart?: Function
+  isBodyPart?: boolean
 }
 
 //Need to fix about scroll
-export const HorizontalScrollBar: React.FC<PropsFromSearch> = ({data, eachBodyPart, setEachBodyPart}) => {
+export const HorizontalScrollBar: React.FC<PropsFromSearch> = ({data, eachBodyPart, setEachBodyPart, isBodyPart}) => {
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+      {/* change the name of parameter. It could be either body part or workout */}
         {data.map((bodyPart:any) => (
             <Box
                 key={bodyPart.id || bodyPart}
                 title={bodyPart.id || bodyPart}
                 m='0, 40px'
             >
-              <BodyPartCard bodyPart={bodyPart} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart}/>
+              { isBodyPart ?
+                <BodyPartCard bodyPart={bodyPart} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart}/> :
+                <WorkoutCard workout={bodyPart}/>}
             </Box>
         ))}
     </ScrollMenu>
