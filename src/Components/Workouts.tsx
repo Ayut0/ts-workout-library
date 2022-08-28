@@ -56,7 +56,7 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
       <Stack direction='row' sx={{gap: {lg: '110px', xs: '50px'}}} flexWrap='wrap' justifyContent='center'>
       {/* (currentShowedWorkouts !== undefined) && */}
         { currentShowedWorkouts?.map((workout, index) =>(
-          <div>
+          <div key={index}>
             <WorkoutCard key={index} workout={workout}/>
           </div>
         ))}

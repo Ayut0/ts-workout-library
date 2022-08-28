@@ -4,6 +4,7 @@ import { HeroBanner } from "../Components/HeroBanner";
 import { SearchWorkouts } from "../Components/SearchWorkouts";
 import { Workouts } from "../Components/Workouts";
 
+//Type for workout data
 export type Workout = {
     bodyPart: string
     equipment: string
@@ -13,17 +14,32 @@ export type Workout = {
     target: string
 }
 
-export type Video = {
-    channelId?: string
-    channelName?: string
-    description?: string
-    length?: string
-    thumbnails: [
-        height: string,
-        url: string,
-        width: string
-    ]
+//Type for Youtube video
+export interface video {
+    contents?: (ContentsEntity)[] | null;
+    estimatedResults: string;
+    next: string;
 }
+export interface ContentsEntity {
+    video: Video;
+}
+export interface Video {
+    channelId: string;
+    channelName: string;
+    description?: string | null;
+    lengthText: string;
+    publishedTimeText?: string | null;
+    thumbnails: (ThumbnailsEntity)[];
+    title: string;
+    videoId: string;
+    viewCountText: string;
+}
+export interface ThumbnailsEntity {
+    height: number;
+    url: string;
+    width: number;
+}
+
 
 export const Home: React.FC = ()=>{
     const [eachBodyPart, setEachBodyPart] = useState<string>('all')
