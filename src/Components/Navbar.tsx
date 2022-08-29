@@ -13,6 +13,7 @@ export const Navbar: React.FC = ()=> {
                 gap='40px'
                 fontSize='24px'
                 alignItems='flex-end'
+                sx={{fontSize: {lg: '24px' ,xs: '16px'}}}
                 >
                 <Link to='/' style={{textDecoration: 'none', fontFamily: 'Mochiy Pop One'}}>HOME</Link>
                 <a href="#workouts" style={{textDecoration: 'none', fontFamily: 'Mochiy Pop One'}}>Workouts</a>

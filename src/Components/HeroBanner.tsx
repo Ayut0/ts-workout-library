@@ -13,13 +13,13 @@ export const HeroBanner: React.FC = () => {
         </Typography>
         <Typography fontWeight={700}
             sx={{
-                fontSize: {lg: '52px', xs: '40px'},
+                fontSize: {lg: '52px', xs: '36px'},
                 fontFamily: 'Mochiy Pop One'
             }}
         mb='24px' mt='36px'>
             Built Different
         </Typography>
-        <Typography fontSize='22px' lineHeight='35px' mb='20px'>
+        <Typography lineHeight='35px' mb='20px' color='#787878' sx={{fontSize: {lg: '22px', xs: '18px'}}}>
             Reach out to your favorite workouts<br/>so, you will never get lost
         </Typography>
             <Button variant="contained" color="secondary" href='#workouts' className='hero-button'  sx={{backgroundColor: '#a862ea', padding: '12px', fontFamily: 'Mochiy Pop One'}}>Explore Workouts</Button>
