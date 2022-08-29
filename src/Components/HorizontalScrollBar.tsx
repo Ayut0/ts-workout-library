@@ -70,6 +70,7 @@ export const HorizontalScrollBar: React.FC<PropsFromSearch> = ({data, eachBodyPa
                 key={bodyPart.id || bodyPart}
                 title={bodyPart.id || bodyPart}
                 m='0, 40px'
+                sx={{ml: {lg: '40px', xs: '12px'}}}
             >
               { isBodyPart ?
                 <BodyPartCard bodyPart={bodyPart} eachBodyPart={eachBodyPart} setEachBodyPart={setEachBodyPart}/> :
