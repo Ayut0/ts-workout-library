@@ -17,16 +17,7 @@ function Arrow({
   return (
     <button
       onClick={onClick}
-      style={{
-        cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        right: '1%',
-        width: '3%',
-        height: 'auto',
-        userSelect: "none"
-      }}
+      className='arrow'
     >
       {children}
     </button>
