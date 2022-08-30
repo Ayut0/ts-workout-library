@@ -54,7 +54,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
       <Box position='relative' mb='72px'>
         <TextField
         sx={{
-          input: { fontWeight: '700', height: '44px', fontSize: { lg: '36px', xs: '28px'}},
+          input: { fontWeight: '700', height: {lg: '44px', xs: '36px'}, fontSize: { lg: '36px', xs: '28px'}},
           width: {lg: '800px', xs: '350px'},
         }} id="standard-basic" label="Search workouts" variant="standard" value={search} onChange={(e) => {setSearch(e.target.value.toLowerCase())}} type='text' />
         <Button className='search-btn'
@@ -64,7 +64,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
             textTransform: 'none',
             width: {lg: '175px', xs: '80px'},
             fontSize: {lg: '20px', xs: '16px'},
-            height: '52px',
+            height: {lg: '52px', xs: '44px'},
             marginTop: '16px',
             position: 'absolute',
             right: '0',

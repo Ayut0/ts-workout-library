@@ -48,7 +48,7 @@ export const Workouts: React.FC<PropsFromHome> = ({ workouts, setWorkouts, eachB
 
   return (
     <Box id='workouts' sx={{mt: {lg: '110px'}}} mt='50px' p='20px'>
-      <Typography variant='h3' mb='48px' fontFamily='Mochiy Pop One'>
+      <Typography variant='h4' mb='48px' fontFamily='Mochiy Pop One' sx={{textAlign: {xs: 'center'}}}>
         Showing results
       </Typography>
       <Stack direction='row' sx={{gap: {lg: '110px', xs: '50px'}}} flexWrap='wrap' justifyContent='center'>

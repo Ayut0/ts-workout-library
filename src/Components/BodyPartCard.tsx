@@ -20,10 +20,10 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
             borderTop: bodyPart === eachBodyPart ? '4px solid #a862ea' : '',
             backgroundColor: '#f8f0fc',
             borderBottomLeftRadius: '20px',
-            width: '270px',
-            height: '280px',
+            width: {lg: '270px', xs: '200px'},
+            height: {lg: '270px', xs: '200px'},
             cursor: 'pointer',
-            gap: '48px'
+            gap: {lg: '48px', xs: '20px'}
         }}
         onClick={()=>{
             setEachBodyPart?.(bodyPart);
@@ -35,7 +35,7 @@ export const BodyPartCard: React.FC<PropsFromScrollBar> = ({ bodyPart, eachBodyP
             className='body-part-icon'
             style={{width: '80px', height: '80px'}}>
         </img>
-        <Typography fontSize='24px' fontWeight='bold' textTransform='capitalize'>
+        <Typography fontSize='24px' fontWeight='bold' textTransform='capitalize' fontFamily='Mochiy Pop One'>
             {bodyPart}
         </Typography>
     </Stack>
