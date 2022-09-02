@@ -15,31 +15,35 @@ function Arrow({
   onClick: VoidFunction
 }){
   return (
-    <button
+    <div
       onClick={onClick}
       className='arrow'
     >
       {children}
-    </button>
+    </div>
   );
 }
 
 const LeftArrow = () => {
-  const { scrollPrev } = useContext(VisibilityContext)
+  const { scrollPrev } = useContext(VisibilityContext);
 
   return (
-    <Arrow onClick={() => scrollPrev()}>
-      <img src={LeftArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
-    </Arrow>
+    <div className='left-arrow'>
+      <Arrow onClick={() => scrollPrev()}>
+        <img src={LeftArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
+      </Arrow>
+    </div>
   );
 };
 
 const RightArrow = () => {
   const { scrollNext } = useContext(VisibilityContext)
   return (
-    <Arrow onClick={() => scrollNext()}>
-      <img src={RightArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
-    </Arrow>
+    <div className='right-arrow'>
+      <Arrow onClick={() => scrollNext()}>
+        <img src={RightArrowIcon} alt="right-arrow" style={{width: '100%'}}/>
+      </Arrow>
+    </div>
   );
 };
 
@@ -54,7 +58,7 @@ type PropsFromSearch = {
 //Need to fix about scroll
 export const HorizontalScrollBar: React.FC<PropsFromSearch> = ({data, eachBodyPart, setEachBodyPart, isBodyPart}) => {
   return (
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} transitionBehavior={'smooth'}>
       {/* change the name of parameter. It could be either body part or workout */}
         {data.map((bodyPart:any) => (
             <Box
