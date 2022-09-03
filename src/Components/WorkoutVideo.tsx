@@ -8,12 +8,11 @@ type PropsFromWorkoutDetail = {
 }
 
 export const WorkoutVideo: React.FC<PropsFromWorkoutDetail> = ({ workoutVideos, name }) => {
-  console.log('rendered')
 
   return (
     <Box sx={{marginTop: { lg: '200px', xs: '20px' }}} p='20px' fontFamily='Mochiy Pop One'>
-      <Typography variant='h4' mb='32px' fontFamily='Mochiy Pop One'>
-          Watch <span style={{color: '#674CAE'}}> {name} </span>video
+      <Typography variant='h4' mb='32px' fontFamily='Mochiy Pop One' sx={{fontSize: {lg: '36px', xs: '20px'}, textAlign:{xs: 'center'}}}>
+          Watch <span style={{color: '#674CAE', textTransform: 'capitalize'}} > {name} </span>videos
       </Typography>
       <Stack justifyContent='flex-start' flexWrap='wrap' alignItems='center'
         sx={{
