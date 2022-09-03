@@ -27,8 +27,9 @@ export const fetchWorkoutVideos = async(url:string) => {
     const data = await res.data;
 
     return data;
-  }catch(e){
-    console.log(e)
+  }catch(e:any){
+    console.log(e.message)
+    console.log(url)
   }
 
 }
@@ -48,8 +49,9 @@ export const fetchWorkout = async(url:string) =>{
     const data = await res.data;
   
     return data;
-  }catch(e){
-    console.log(e)
+  }catch(e:any){
+    console.log(e.message)
+    console.log(url)
   }
 
 }
