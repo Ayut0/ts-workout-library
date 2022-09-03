@@ -22,9 +22,8 @@ export const fetchWorkoutVideos = async(url:string) => {
   }
 
   const res = await axios.request(youtubeSearchOptions);
-  // console.log(res)
+
   const data = await res.data;
-  // console.log(data)
 
   return data;
 }
@@ -41,7 +40,7 @@ export const fetchWorkout = async(url:string) =>{
 
     const res = await axios.request(workoutOptions);
     const data = await res.data;
-    // console.log(data);
+
     return data;
 }
 

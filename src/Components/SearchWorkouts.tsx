@@ -27,9 +27,8 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
   const searchHandler =async () => {
     if(search){
         const workoutData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`);
-        console.log(workoutData);
 
-        //Filter workout based on user's input (name, bodypart, target, equipment)
+        //Filter workout based on user's input (name, body part, target, equipment)
         const filteredWorkouts = await workoutData.filter(
           (workout:Workout) =>
           workout.name.toLowerCase().includes(search)
