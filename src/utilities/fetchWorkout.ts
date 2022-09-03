@@ -21,11 +21,16 @@ export const fetchWorkoutVideos = async(url:string) => {
     }
   }
 
-  const res = await axios.request(youtubeSearchOptions);
+  try{
+    const res = await axios.request(youtubeSearchOptions);
+  
+    const data = await res.data;
 
-  const data = await res.data;
+    return data;
+  }catch(e){
+    console.log(e)
+  }
 
-  return data;
 }
 
 export const fetchWorkout = async(url:string) =>{
@@ -38,10 +43,15 @@ export const fetchWorkout = async(url:string) =>{
       }
   };
 
+  try{
     const res = await axios.request(workoutOptions);
     const data = await res.data;
-
+  
     return data;
+  }catch(e){
+    console.log(e)
+  }
+
 }
 
 
