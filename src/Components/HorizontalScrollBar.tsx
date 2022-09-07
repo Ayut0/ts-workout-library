@@ -47,7 +47,6 @@ const RightArrow = () => {
   );
 };
 
-
 type PropsFromSearch = {
   data: string[] | Workout []
   eachBodyPart?: string

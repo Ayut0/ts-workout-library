@@ -18,7 +18,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
   useEffect(() =>{
     const fetchWorkoutData = async () =>{
       const bodyPartsList = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
-      console.log(process.env.REACT_APP_RAPID_API_BODYPARTS)
+      console.log(process.env.REACT_APP_RAPID_API_KEY)
       setBodyParts(['all', ...bodyPartsList])
     }
 
@@ -30,7 +30,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
         const workoutData:Workout[] = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_ALL_WORKOUT}`);
 
         //Filter workout based on user's input (name, body part, target, equipment)
-        const filteredWorkouts = await workoutData.filter(
+        const filteredWorkouts = workoutData.filter(
           (workout:Workout) =>
           workout.name.toLowerCase().includes(search)
           || workout.bodyPart.toLowerCase().includes(search)

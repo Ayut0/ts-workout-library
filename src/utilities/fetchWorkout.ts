@@ -11,7 +11,7 @@ import axios from "axios"
 //   }
 // }
 
-export const fetchWorkoutVideos = async(url:string) => {
+export const fetchWorkoutVideos = async (url:string) => {
   const youtubeSearchOptions:any = {
     method: 'GET',
     url: url,
@@ -23,7 +23,6 @@ export const fetchWorkoutVideos = async(url:string) => {
 
   try{
     const res = await axios.request(youtubeSearchOptions);
-  
     const data = await res.data;
 
     return data;
@@ -47,7 +46,7 @@ export const fetchWorkout = async(url:string) =>{
   try{
     const res = await axios.request(workoutOptions);
     const data = await res.data;
-  
+
     return data;
   }catch(e:any){
     console.log(e.message)
