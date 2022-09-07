@@ -18,7 +18,7 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
   useEffect(() =>{
     const fetchWorkoutData = async () =>{
       const bodyPartsList = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
-      console.log(process.env.REACT_APP_RAPID_API_KEY)
+      // console.log(process.env.REACT_APP_RAPID_API_KEY)
       setBodyParts(['all', ...bodyPartsList])
     }
 
