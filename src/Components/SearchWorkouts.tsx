@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Workout } from '../UI/Home'
 import {Box, Button, Stack, TextField, Typography} from '@mui/material';
 import { fetchWorkout } from '../utilities/fetchWorkout';
@@ -18,12 +18,12 @@ export const SearchWorkouts: React.FC<PropsFromHome> = ({ setWorkouts, eachBodyP
   useEffect(() =>{
     const fetchWorkoutData = async () =>{
       const bodyPartsList = await fetchWorkout(`${process.env.REACT_APP_RAPID_API_BODYPARTS}`);
-      // console.log(process.env.REACT_APP_RAPID_API_KEY)
+      console.log(process.env.REACT_APP_RAPID_API_BODYPARTS)
       setBodyParts(['all', ...bodyPartsList])
     }
 
     fetchWorkoutData();
-  },[])
+  }, [])
 
   const searchHandler =async () => {
     if(search){
