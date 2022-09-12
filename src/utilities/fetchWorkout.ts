@@ -17,7 +17,7 @@ export const fetchWorkoutVideos = async (url:string) => {
     url: url,
     headers: {
       'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com',
-      'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_YOUTUBE_KEY
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY
     }
   }
 
@@ -28,6 +28,7 @@ export const fetchWorkoutVideos = async (url:string) => {
     return data;
   }catch(e:any){
     console.log(e.message)
+    console.error(e)
     console.log(url)
   }
 
@@ -50,6 +51,7 @@ export const fetchWorkout = async(url:string) =>{
     return data;
   }catch(e:any){
     console.log(e.message)
+    console.error(e)
     console.log(url)
   }
 
