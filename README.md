@@ -1,13 +1,16 @@
 # Workout Library
 
-![App Image]('./../src/assets/workout-library1.png'
-)
+![App Image](/src/assets/workout-library1.png)
 ## Description
 
 I'd been hitting the gym for couple of years and looking for a platform to search several workouts at once.
 I decided to build this app for everyone who wants to know "how to do workout", "what kind of workout".
 
 This app "Workout Library" provides you more than 1,300 workouts based on keywords, body part that you want to build and equipments.
+
+![App Image](/src/assets/workout-library2.png)
+
+![App Image](/src/assets/workout-library3.png)
 
 During this project, I learned about TypeScript and Material UI.
 
