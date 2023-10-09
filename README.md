@@ -4,7 +4,7 @@
 ## Description
 
 I'd been hitting the gym for couple of years and looking for a platform to search several workouts at once.
-I decided to build this app for everyone who wants to know "how to do workout", "what kind of workout".
+I decided to build this app for everyone who wants to know "How to do workout", "What kind of workout I can do".
 
 This app "Workout Library" provides you more than 1,300 workouts based on keywords, body part that you want to build and equipments.
 
